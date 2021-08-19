@@ -1,0 +1,67 @@
+
+query {
+  getAllAuthors{
+    id
+    fullName
+    createAt
+    books {
+      id
+      title
+    }
+  }
+}
+
+mutation {
+  createAuthor(request: {fullName: "Pablo Cohelo", id: 0})
+  {
+    id
+    fullName
+    createAt
+  }
+}
+
+query {
+  getAuthorById(request:{id: 11, fullName: ""})
+  {
+    fullName
+    createAt
+  }
+}
+
+mutation {
+  updateAuthor(request: { id: 1, fullName: "Leopoldo Marechal"})
+  {
+    fullName
+    id
+    createAt
+  }
+}
+
+mutation {
+  deleteAuthor(request: {id: 11})
+}
+
+
+mutation {
+  register(request: {
+    fullName: "Carlos Pepo"
+    email: "carlitos@tst.com"
+    password: "qwerty123456"
+  })
+  {
+    id
+    fullName
+    email
+    password
+  }
+}
+mutation {
+  login(request:{
+    email: "carlitos@tst.com",
+    password: "qwerty123456"
+  })
+  {
+    userId
+    jwt
+  }
+}
